@@ -1,38 +1,100 @@
-.App {
-  text-align: center;
+*{
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+  background-color: rgb(240, 238, 238);
+  font-size: 16px;
+  color: #333;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+input{
+  outline: none !important;
+  border-bottom: 1px solid rgb(207, 206, 206);
+  padding: 10px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+input[type = 'search']{
+  width: 100% !important;
+}
+/* Student Component */
+.students{
+  background-color: #fff !important;
+  border-radius: 8px;
+  border: 1px solid #dfe0eb;
+  padding: 20px;
+  margin: 100px auto;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  width: 800px;
+  height: 600px;
+  overflow: auto;
+}
+/* Student Item Component */
+.student-item {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  border-bottom: 1px solid rgb(207, 206, 206);
+  margin-bottom: 10px;
+}
+.student-item img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid rgb(207, 206, 206);
+  margin-right: 40px;
+}
+.student-item-details {
+  color: #333;
+  margin-bottom: 20px;
+}
+.student-item h1 {
+  text-transform: uppercase;
+  font-weight: bolder;
+  color: #000;
+  margin-bottom: 10px;
+}
+.student-item p {
+  font-size: 14px;
+  margin-left: 10px;
+}
+.student-item .button-container{
+  margin-left: auto;
+  cursor: pointer;
+}
+.student-item button {
+  background-color: #fff;
+  cursor: pointer;
+
+}
+#test-scores span:first-child{
+  margin-right: 20px;
+}
+.fa-plus, .fa-minus{
+  font-size: 24px;
+  color:rgb(179, 177, 177);
+  cursor: pointer;
+}
+.fa-plus:hover, .fa-minus:hover{
+  color: #333;
+}
+input[type = 'text']{
+  width: 70%;
+}
+#new-tag{
+  background-color: rgb(207, 206, 206);
+  padding: 10px 15px;
+  width: fit-content;
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-top: 10px;
+  display: inline-block;
 }
 
-.App-link {
-  color: #61dafb;
+/* Name Filter Component */
+.name-filter-search-bar {
+  margin-bottom: 10px;
+}
+/* Tag Filter Component */
+.tag-filter-search-bar{
+  margin-bottom: 30px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

@@ -1,24 +1,18 @@
-import logo from './logo.svg';
+import StudentState from '../src/context/students/StudentState'
+import Home from '../src/components/screens/Home'
 import './App.css';
+import { ToastProvider } from 'react-toast-notifications'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StudentState>
+      <ToastProvider>
+        <div >
+          <Home />
+        </div>
+      </ToastProvider>
+    </StudentState>
+    
   );
 }
 

@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  hatchways_evaluation: 
+    container_name: hatchways-evaluation
+    image: hatchways_evaluation
+    build: .
+    ports:
+      - 8989
+    volumes:
+      - .:/src
+    networks:
+      - main_network
+        
+networks:
+  main_network:
+    driver: bridge
