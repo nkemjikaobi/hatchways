@@ -18,13 +18,10 @@ const Students = () => {
                                     <StudentItem student={name} key={name.id}/>
                                 ))
 
-    //This is quite different because we want to get the studentId from tag and get the associated student
     const displayFilteredTag = filteredTag && filteredTag.map(tag => (
-                                students.map(s => (
-                                s.id === tag.studentId &&  <StudentItem student={s} key={s.id}/>
-    ))))
+                                    <StudentItem student={tag} key={tag.id}/>
+                                ))
 
-    displayFilteredTag && console.log(displayFilteredTag);
     return (
     
         <div className='students'>

@@ -60,16 +60,24 @@ const studentReducer = (state,action) => {
                 })
             }
         case FILTER_STUDENTS_BY_TAG:
-            console.log(state.students.tags);
             return {
                 ...state,
-                filteredTag: state.tags.filter(tag => {
+                filteredTag: state.students.filter(student => {
 
                     const regex = new RegExp(`${action.payload}`, 'gi')
 
-                    return (tag.tag && tag.tag.match(regex))
+                    //Create a local variable to store the tag name
+                    var tagName;
+
+                    //If tags exist, then loop through and store the tagName
+                    student.tags &&
+                        student.tags.map(t => (
+                            tagName = t.tag
+                        ))
+                        
+                    return (student.tags && tagName.match(regex))
                 })
-               }
+            }
         case GET_STUDENTS:
             return {
                 ...state,

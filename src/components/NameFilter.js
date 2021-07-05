@@ -23,6 +23,10 @@ const NameFilter = () => {
 
             filterStudentsByName(e.target.value);
         }
+        // else if(text.current.value !== '' && filteredName.length < 1){
+        //     //return <h1 style={{ backgroundColor: 'orange' }}>No name matches found...</h1>
+        //     alert('no matches')
+        // }
         else{
            clearNameFilter();
         }

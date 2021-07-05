@@ -22,6 +22,7 @@ docker run \
     --env-file=${ROOT}/.env \
     --network=${IMAGE_NAME}_main_network \
     ${IMAGE_NAME} \
+    sh -c "npm install"
     sh -c "npm start"
 
 echo " ----- EXITED from disposable container -----"

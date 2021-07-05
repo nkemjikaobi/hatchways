@@ -23,6 +23,9 @@ const TagFilter = () => {
 
             filterStudentsByTag(e.target.value);
         }
+        // else if(text.current.value !== '' && filteredTag.length < 1 ){
+        //     return <p>No name matches found...</p>
+        // }
         else{
            clearTagFilter();
         }
