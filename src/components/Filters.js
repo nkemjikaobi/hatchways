@@ -23,32 +23,29 @@ const Filters = () => {
       //Monitor changes on the filters (name and tag)
       const handleChange = e => {
 
-         // For both name and tags filter 
+          //For name filter
+          if(e.target.name === "name"){
+
+            nameFilter.current.value !== '' ?
+              filterStudentsByName(e.target.value)
+            : clearNameFilter()
+          } 
+
+          //For tag filter
+          if(e.target.name === "tag"){
+            tagFilter.current.value !== '' ?
+              filterStudentsByTag(e.target.value)
+            : clearTagFilter()
+          } 
+
+          //For both tags and filter
           if(nameFilter.current.value !== "" && tagFilter.current.value !== ""){
-              filterStudentsByNameAndTag(nameFilter.current.value, tagFilter.current.value)
+            filterStudentsByNameAndTag(nameFilter.current.value, tagFilter.current.value)
           }
           else if (nameFilter.current.value === "" || tagFilter.current.value === ""){
               clearNameAndTagFilter()
           }
 
-          //For name filter
-          if(e.target.name === "name" && nameFilter.current.value !== ''){
-
-            filterStudentsByName(e.target.value);
-          }
-          else if(nameFilter.current.value === ""){
-            clearNameFilter()
-          }
-
-          //For tags filter
-          else if(e.target.name === "tag" && tagFilter.current.value !== ''){
-
-            filterStudentsByTag(e.target.value);
-          }
-          else if(tagFilter.current.value === ""){
-            clearTagFilter()
-          }
-          
        
     }
 
