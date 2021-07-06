@@ -2,8 +2,10 @@ import {
     ADD_TAG,
     CLEAR_NAME_FILTER,
     CLEAR_TAG_FILTER,
+    CLEAR_NAME_AND_TAG_FILTER,
     FILTER_STUDENTS_BY_NAME,
     FILTER_STUDENTS_BY_TAG,
+    FILTER_STUDENTS_BY_NAME_AND_TAG,
     GET_STUDENTS,
     STUDENT_ERROR,
    
@@ -45,11 +47,17 @@ const studentReducer = (state,action) => {
                 ...state,
                 filteredTag: null
             }
+
+        case CLEAR_NAME_AND_TAG_FILTER:
+            return {
+                ...state,
+                filteredNameAndTag: null
+            }
        
         case FILTER_STUDENTS_BY_NAME:
             return {
                 ...state,
-                filteredName: state.students.filter(student => {
+                filteredName: state.students && state.students.filter(student => {
 
                     const regex = new RegExp(`${action.payload}`, 'gi')
 
@@ -62,7 +70,7 @@ const studentReducer = (state,action) => {
         case FILTER_STUDENTS_BY_TAG:
             return {
                 ...state,
-                filteredTag: state.students.filter(student => {
+                filteredTag: state.students && state.students.filter(student => {
 
                     const regex = new RegExp(`${action.payload}`, 'gi')
 
@@ -76,6 +84,36 @@ const studentReducer = (state,action) => {
                         ))
                         
                     return (student.tags && tagName.match(regex))
+                })
+            }
+        case FILTER_STUDENTS_BY_NAME_AND_TAG:
+
+            return {
+                ...state,
+                filteredNameAndTag: 
+                
+                //If name has been filtered, filter tags from there
+                state.filteredName ? state.filteredName.filter(filteredName => {
+
+                    const regex = new RegExp(`${action.payload.tag}`, 'gi')
+
+                    //Create a local variable to store the filtered tag name
+                    var filteredTagName;
+                    
+                    filteredName.tags &&
+                        filteredName.tags.map(t => (
+                            filteredTagName = t.tag
+                        ))
+                        
+                    return (filteredName.tags && filteredTagName.match(regex))
+                }) :
+
+                //If tags have been filtered, filter name from there
+                state.filteredTag && state.filteredTag.filter(filteredTag => {
+
+                    const regex = new RegExp(`${action.payload.name}`, 'gi')
+
+                    return (filteredTag.firstName && filteredTag.firstName.match(regex)) || (filteredTag.lastName && filteredTag.lastName.match(regex))
                 })
             }
         case GET_STUDENTS:

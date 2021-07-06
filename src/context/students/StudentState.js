@@ -7,9 +7,11 @@ import {
     BASE_URL,
     CLEAR_NAME_FILTER,
     CLEAR_TAG_FILTER,
+    CLEAR_NAME_AND_TAG_FILTER,
     STUDENT_ERROR,
     FILTER_STUDENTS_BY_NAME,
     FILTER_STUDENTS_BY_TAG,
+    FILTER_STUDENTS_BY_NAME_AND_TAG,
     GET_STUDENTS,
  } from '../types'
 
@@ -19,6 +21,7 @@ import {
         error: null,
         filteredName: null,
         filteredTag: null,
+        filteredNameAndTag: null,
         loading: true,
         students: null,
         tags: []
@@ -65,6 +68,14 @@ import {
         })
     }
 
+     //Clear Name and Tag Filter
+     const clearNameAndTagFilter = () => {
+
+        dispatch({ 
+            type: CLEAR_NAME_AND_TAG_FILTER 
+        })
+    }
+
 
      //Filter Students by Name
      const filterStudentsByName = name => {
@@ -83,6 +94,16 @@ import {
             payload: tag 
         })
     }
+
+     //Filter Students By Name and Tag
+     const filterStudentsByNameAndTag = (name,tag) => {
+
+        dispatch({ 
+            type: FILTER_STUDENTS_BY_NAME_AND_TAG, 
+            payload: {name,tag} 
+        })
+    }
+
      //Get all students
      const getStudents = async () => {
 
@@ -106,14 +127,17 @@ import {
              error: state.error,
              filteredName: state.filteredName,
              filteredTag: state.filteredTag,
+             filteredNameAndTag: state.filteredNameAndTag,
              loading: state.loading,
              students: state.students,
              tags: state.tags,
              addTag,
              clearNameFilter,
              clearTagFilter,
+             clearNameAndTagFilter,
              filterStudentsByName,
              filterStudentsByTag,
+             filterStudentsByNameAndTag,
              getStudents
          }}>
             { props.children }

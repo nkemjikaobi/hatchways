@@ -1,14 +1,13 @@
 import React, { useContext } from 'react'
 import Spinner from '../components/layouts/Spinner'
-import NameFilter from './NameFilter'
 import StudentItem from './StudentItem'
 import studentContext from '../context/students/studentContext'
-import TagFilter from './TagFilter'
+import Filters from './Filters'
 
 const Students = () => {
 
     const StudentContext = useContext(studentContext)
-    const { students, loading, filteredName, filteredTag } = StudentContext
+    const { students, loading, filteredName, filteredTag, filteredNameAndTag } = StudentContext
 
     const displayStudents =   students && students.map(student => (
                                 <StudentItem student={student} key={student.id}/>
@@ -22,15 +21,19 @@ const Students = () => {
                                     <StudentItem student={tag} key={tag.id}/>
                                 ))
 
+    const displayFilteredNameAndTag = filteredNameAndTag && filteredNameAndTag.map(tag => (
+                                    <StudentItem student={tag} key={tag.id}/>
+                                ))
+
     return (
     
         <div className='students'>
 
-            <NameFilter />
-            <TagFilter />
+           <Filters />
 
             {
                 loading ? <Spinner /> : 
+                displayFilteredNameAndTag ? displayFilteredNameAndTag :
                 displayFilteredName ? displayFilteredName : 
                 displayFilteredTag ? displayFilteredTag :
                 displayStudents && displayStudents
