@@ -23,7 +23,7 @@ const Filters = () => {
       //Monitor changes on the filters (name and tag)
       const handleChange = e => {
 
-       // For both name and tags filter 
+         // For both name and tags filter 
           if(nameFilter.current.value !== "" && tagFilter.current.value !== ""){
               filterStudentsByNameAndTag(nameFilter.current.value, tagFilter.current.value)
           }
@@ -32,7 +32,7 @@ const Filters = () => {
           }
 
           //For name filter
-          else if(e.target.name === "name" && nameFilter.current.value !== ''){
+          if(e.target.name === "name" && nameFilter.current.value !== ''){
 
             filterStudentsByName(e.target.value);
           }
@@ -49,9 +49,6 @@ const Filters = () => {
             clearTagFilter()
           }
           
-          else{
-              console.log("not doing anything");
-          }
        
     }
 
